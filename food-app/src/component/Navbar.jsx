@@ -8,6 +8,7 @@ export const Navbar = () => {
         <Link className="navbar-brand fs-1 fst-italic" to="/">
           GoFood
         </Link>
+        ghbn
         <button
           className="navbar-toggler"
           type="button"
