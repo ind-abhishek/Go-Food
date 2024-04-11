@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Assuming you are using React Router for navigation
-
+import { Link } from "react-router-dom";
 const SignUp = () => {
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
     password: "",
-    Address: "", // Initialize Address field in the state
+    Address: "",
   });
 
   const handleChange = (e) => {
@@ -63,7 +62,7 @@ const SignUp = () => {
               Email address
             </label>
             <input
-              type="email"
+              type="text"
               className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
@@ -80,7 +79,7 @@ const SignUp = () => {
               Password
             </label>
             <input
-              type="password"
+              type="text"
               className="form-control"
               id="exampleInputPassword1"
               name="password"

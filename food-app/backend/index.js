@@ -7,9 +7,12 @@ mongoDb();
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow requests from this origin
+    origin: ["http://localhost:5173", "http://localhost:3000"],
   })
 );
+
+app.use(express.json());
+app.use("/api", require("./Routes/createUser"));
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -24,8 +27,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.json());
-app.use("/api", require("./Routes/createUser"));
+app.use((req, res, next) => {
+  console.log("Request Headers:", req.headers);
+  next();
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
