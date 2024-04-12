@@ -30,9 +30,13 @@ function Login() {
       if (!json.success) {
         alert("Invalid credentials");
       } else {
+        localStorage.setItem("authToken", json.authToken);
+        // Move the logging code inside the callback function of setItem
+        localStorage.getItem("authToken", (token) => {
+          console.log(token);
+        });
         console.log(json);
-        // Redirect user to home page or dashboard
-        window.location.href = "/"; // Change this to the appropriate route
+        window.location.href = "/";
       }
     } catch (error) {
       console.error("Error:", error);
