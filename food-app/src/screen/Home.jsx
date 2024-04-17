@@ -9,11 +9,22 @@ const Home = () => {
   const [foodCat, setFoodCat] = useState{ []};
   const [foodItem, setFoodCat] = useState{ []};
 
-  const loaData = async () => {
-  let response = await fatch
+  const loadData = async () => {
+    let response = await fatch("http://localhost:5000/api/foodData", method: "POST",
+      Headers: {
+      'Content-Type': "application/json"
+    }) 
+    
+    response = await response.json();
+    setfoodItems(response[0])
+    setfoodCat(response[1])
+    // console.log(response[0], response[1])
+    
   }
 
-
+  useEffect(() => {
+    loadData()
+  },[])
 
 
 
@@ -31,9 +42,7 @@ const Home = () => {
       </div>
       <div className="m-3 d-inline">
         <Card />
-        <Card />
-        <Card />
-        <Card />
+
       </div>
       <div>
         <Footer />
