@@ -3,16 +3,16 @@ const mongoose = require("mongoose");
 const mongooseURL = "mongodb://127.0.0.1:27017/goFood";
 
 const mongoDb = async () => {
+  let foodItems;
   try {
     await mongoose.connect(mongooseURL);
-    console.log("Connected to MongoDB");
-
     const fetchedData = await mongoose.connection.db.collection("foodItems");
-    const data = await fetchedData.find({}).toArray();
-    console.log();
+    foodItems = await fetchedData.find({}).toArray();
+    // console.log(foodItems);
   } catch (err) {
-    console.error("Error connecting to MongoDB:", err);
+    console.error("Error fetching data from MongoDB:", err);
   }
+  return foodItems;
 };
 
 module.exports = mongoDb;
